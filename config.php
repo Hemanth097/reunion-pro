@@ -4,9 +4,10 @@ $username = "admin123";
 $password = "pollpro1@";
 $dbname = "reunion_poll";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$connectionInfo = array("Database" => $dbname, "UID" => $username, "PWD" => $password);
+$conn = sqlsrv_connect($servername, $connectionInfo);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($conn === false) {
+    die(print_r(sqlsrv_errors(), true));
 }
 ?>

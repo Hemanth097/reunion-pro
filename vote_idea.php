@@ -5,12 +5,19 @@ $data = json_decode(file_get_contents("php://input"));
 $id = $data->id;
 $name = $data->name;
 
-$conn->query("INSERT INTO users (name) VALUES ('$name') ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id)");
-$userId = $conn->insert_id;
+$sql = "INSERT INTO users (name) OUTPUT INSERTED.id VALUES (?)";
+$params = array($name);
+$stmt = sqlsrv_query($conn, $sql, $params);
+sqlsrv_fetch($stmt);
+$userId = sqlsrv_get_field($stmt, 0);
 
-$conn->query("UPDATE ideas SET votes = votes + 1 WHERE id = $id");
+$sql = "UPDATE ideas SET votes = votes + 1 WHERE id = ?";
+$params = array($id);
+sqlsrv_query($conn, $sql, $params);
 
-$conn->query("INSERT INTO logs (user_id, action) VALUES ($userId, 'voted for idea ID: $id')");
+$sql = "INSERT INTO logs (user_id, action) VALUES (?, ?)";
+$params = array($userId, "voted for idea ID: $id");
+sqlsrv_query($conn, $sql, $params);
 
-$conn->close();
+sqlsrv_close($conn);
 ?>
