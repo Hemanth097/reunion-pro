@@ -49,7 +49,7 @@
             fetch('submit_idea.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, idea })
+                body: JSON.stringify({ name: name, idea: idea })
             }).then(() => {
                 document.getElementById('idea').value = '';
                 loadIdeas();
@@ -62,7 +62,7 @@
             fetch('vote_idea.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id, name })
+                body: JSON.stringify({ id: id, name: name })
             }).then(() => {
                 loadIdeas();
             });
