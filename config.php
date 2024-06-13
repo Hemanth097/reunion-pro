@@ -8,7 +8,7 @@ $connectionInfo = array("Database" => $dbname, "UID" => $username, "PWD" => $pas
 $conn = sqlsrv_connect($servername, $connectionInfo);
 
 if ($conn === false) {
-    die(print_r(sqlsrv_errors(), true));
+    die(json_encode(array("error" => print_r(sqlsrv_errors(), true))));
 }
 ?>
 
