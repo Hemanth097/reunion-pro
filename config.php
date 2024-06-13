@@ -1,7 +1,7 @@
 <?php
-$servername = "beastserver.mysql.database.azure.com";
+$servername = "beastpollserver.mysql.database.azure.com";
 $username = "admin123";
-$password = "pollpro1@";
+$password = "pollPro1@";
 $dbname = "reunion_poll";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
