@@ -1,7 +1,7 @@
 <?php
-$servername = "beastserver.mysql.database.azure.com";
+$servername = "beastpollserver.database.windows.net";
 $username = "admin123";
-$password = "pollpro1@";
+$password = "pollPro1@";
 $dbname = "reunion_poll";
 
 $connectionInfo = array("Database" => $dbname, "UID" => $username, "PWD" => $password);
