@@ -3,7 +3,10 @@ include 'db.php';
 
 function getPollOptions() {
     global $conn;
-    $sql = "SELECT * FROM PollOptions";
+    $sql = "SELECT po.id, po.option_text, COUNT(v.id) AS vote_count
+            FROM PollOptions po
+            LEFT JOIN Votes v ON po.id = v.option_id
+            GROUP BY po.id, po.option_text";
     $stmt = sqlsrv_query($conn, $sql);
     $options = array();
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {

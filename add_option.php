@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['option_text'])) {
     $userId = $user['id'];
     
     addPollOption($optionText, $userId);
+    
+    echo json_encode(['status' => 'success']);
 }
-
-header('Location: views/polls.php');
 ?>

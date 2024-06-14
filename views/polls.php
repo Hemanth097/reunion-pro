@@ -32,14 +32,11 @@ $pollOptions = getPollOptions();
         <div class="card-header">
             <h3>Poll Options</h3>
         </div>
-        <ul class="list-group list-group-flush">
+        <ul class="list-group list-group-flush" id="poll-options">
             <?php foreach ($pollOptions as $option): ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <?php echo htmlspecialchars($option['option_text']); ?>
-                    <form action="../submit_vote.php" method="POST" class="form-inline">
-                        <input type="hidden" name="option_id" value="<?php echo $option['id']; ?>">
-                        <button type="submit" class="btn btn-primary">Vote</button>
-                    </form>
+                    <span><?php echo htmlspecialchars($option['option_text']); ?> - <span class="badge badge-primary badge-pill"><?php echo $option['vote_count']; ?> votes</span></span>
+                    <button class="btn btn-primary vote-button" data-option-id="<?php echo $option['id']; ?>">Vote</button>
                 </li>
             <?php endforeach; ?>
         </ul>
@@ -49,9 +46,9 @@ $pollOptions = getPollOptions();
             <h3>Add New Option</h3>
         </div>
         <div class="card-body">
-            <form action="../add_option.php" method="POST">
+            <form id="add-option-form">
                 <div class="form-group">
-                    <input type="text" name="option_text" class="form-control" required>
+                    <input type="text" id="option_text" name="option_text" class="form-control" required>
                 </div>
                 <button type="submit" class="btn btn-success btn-block">Add</button>
             </form>
