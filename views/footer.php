@@ -1,6 +1,6 @@
-<footer class="footer mt-auto py-3">
+    <footer class="footer mt-auto py-3">
         <div class="container">
-            <span class="text-muted">Polling App © 2023</span>
+            <span class="text-muted">Beast Works © 2024</span>
         </div>
     </footer>
 </body>
