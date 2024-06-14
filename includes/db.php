@@ -1,9 +1,9 @@
 <?php
-$serverName = "your_server_name";
+$serverName = "beastpollserver.database.windows.net";
 $connectionOptions = array(
-    "Database" => "your_database_name",
-    "Uid" => "your_username",
-    "PWD" => "your_password"
+    "Database" => "reunion_poll",
+    "Uid" => "admin123",
+    "PWD" => "pollPro1@"
 );
 
 //Establishes the connection
