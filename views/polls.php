@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
 }
 
 if (!isset($_SESSION['username'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -57,4 +57,4 @@ $pollOptions = getPollOptions();
         </div>
     </div>
 </div>
-<?php include 'footer.ph
+<?php include 'footer.php'; ?>
