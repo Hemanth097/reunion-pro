@@ -10,9 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['option_id'])) {
     $stmt = sqlsrv_query($conn, $sql, array($userName));
     $user = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
     $userId = $user['id'];
-    
     submitVote($userId, $optionId);
-    
-    echo json_encode(['status' => 'success']);
 }
 ?>

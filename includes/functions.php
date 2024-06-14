@@ -24,9 +24,15 @@ function addPollOption($optionText, $userId) {
 
 function submitVote($userId, $optionId) {
     global $conn;
-    $sql = "INSERT INTO Votes (user_id, option_id) VALUES (?, ?)";
-    $params = array($userId, $optionId);
-    sqlsrv_query($conn, $sql, $params);
+    // Check if the user has already voted for this option
+    $checkSql = "SELECT * FROM Votes WHERE user_id = ? AND option_id = ?";
+    $checkStmt = sqlsrv_query($conn, $checkSql, array($userId, $optionId));
+    if (sqlsrv_fetch_array($checkStmt, SQLSRV_FETCH_ASSOC) === null) {
+        // If not voted yet, insert the vote
+        $sql = "INSERT INTO Votes (user_id, option_id) VALUES (?, ?)";
+        $params = array($userId, $optionId);
+        sqlsrv_query($conn, $sql, $params);
+    }
 }
 
 function getLogs() {
