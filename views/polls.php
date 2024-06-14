@@ -26,6 +26,8 @@ $userId = $user['id'];
 
 $pollOptions = getPollOptions();
 ?>
+
+<?php include 'header.php'; ?>
 <div class="container">
     <h2>Welcome, <?php echo htmlspecialchars($userName); ?>!</h2>
     <div class="card mt-4">
@@ -55,4 +57,4 @@ $pollOptions = getPollOptions();
         </div>
     </div>
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'footer.ph

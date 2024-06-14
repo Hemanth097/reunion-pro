@@ -4,6 +4,8 @@ include '../includes/functions.php';
 
 $logs = getLogs();
 ?>
+
+<?php include 'header.php'; ?>
 <div class="container">
     <h2>Logs</h2>
     <ul class="list-group">

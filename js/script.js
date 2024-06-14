@@ -1,15 +1,5 @@
 $(document).ready(function() {
-    $('.vote-button').click(function() {
-        var optionId = $(this).data('option-id');
-        $.ajax({
-            url: '../submit_vote.php',
-            type: 'POST',
-            data: { option_id: optionId },
-            success: function(response) {
-                loadPollOptions();
-            }
-        });
-    });
+    loadPollOptions();
 
     $('#add-option-form').submit(function(event) {
         event.preventDefault();
