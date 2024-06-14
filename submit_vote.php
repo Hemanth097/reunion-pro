@@ -1,4 +1,5 @@
 <?php
+include 'includes/db.php';
 include 'includes/functions.php';
 session_start();
 
@@ -14,3 +15,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['option_id'])) {
 }
 
 header('Location: views/polls.php');
+?>

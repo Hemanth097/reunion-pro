@@ -8,7 +8,12 @@ $connectionOptions = array(
 
 //Establishes the connection
 $conn = sqlsrv_connect($serverName, $connectionOptions);
-if(!$conn) {
-    die("Connection failed: " . sqlsrv_errors());
+if (!$conn) {
+    $errors = sqlsrv_errors();
+    $errorMsg = "";
+    foreach ($errors as $error) {
+        $errorMsg .= "SQLSTATE: ".$error['SQLSTATE']."; Code: ".$error['code']."; Message: ".$error['message']."<br/>";
+    }
+    die("Connection failed: " . $errorMsg);
 }
 ?>
